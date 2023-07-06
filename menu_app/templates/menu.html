@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/menu.css' %}"> {% endblock %}
+{% block js %}
+<script src="{% static 'js/jQuery.js' %}" defer></script>
+<script src="{% static 'js/menu.js' %}" defer></script>
+{% endblock %}
+
+{% block title %}Меню{% endblock %}
+
+
+{% block content %}
+    <div class="align-top-center-v content">
+        <div class="title align-center-h"><h1>Меню</h1></div>
+        <div class="all_products align-top-center-v">
+            <div class="align-top-center-v">
+                <div class="align-left-h category">
+                    {% for product in all_products %}
+                        <form class="add-to-cart-form" method="post">
+                            {% csrf_token %}
+                            <div class="align-top-center-v product-card">
+                                <input class="product" type="text" name="product_pk" value="{{ product.pk }}" hidden>
+                                <a href="{{ product.pk }}"><img class="product-image" src="{{ product.image.url }}" alt="wtf, bro" width="278px" height="230px"></a>
+                                <div class="product-text">
+                                    <a href="{{ product.pk }}"><h2 class="align-top-center-v product-name">{{ product.name }}</h2></a>
+                                    <a href="{{ product.pk }}"><h2 class="align-top-center-v product-price">{{ product.price }}грн</h2></a>
+                                    <div class="counter-cart">
+                                        <div class="counter-number">
+                                            <input type="button" class="button-minus" value="-">
+                                            <input class="counter" type="number" id="count" name="count" value="1" readonly>
+                                            <input type="button" class="button-plus" value="+">
+                                        </div>
+                                        <div class="cart">
+                                            <input class="add_to_cart" type="submit" name="button" value="Додати до кошику">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

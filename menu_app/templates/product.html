@@ -1,0 +1,89 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/product.css' %}"> {% endblock %}
+{% block title %}Продукт{% endblock %}
+
+{% block js %} 
+<script src="{% static 'js/product.js' %}" defer></script> 
+<script src="{% static 'js/jQuery.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="content" style="background-image: linear-gradient(0deg,rgba(0, 0, 0, 0.5), rgba(0,0,0,0.5)), url({{product.image.url}});">
+        <div class="workspace">
+            <div class="align-left-h img-info">
+                <form class="top-product align-center-h" id="add-to-cart" method="post">
+                    {% csrf_token %}
+                    <input class="product" type="text" name="product" value="{{ product.pk }}" hidden>
+                    <div class="image">
+                        <img src="{{ product.image.url }}" width="350px">
+                    </div>
+                    <div class="align-top-center-v info">
+                        <div class="prod-name">
+                            <h2>{{ product.name }}</h2>
+                        </div>
+                        <div class="ingredients">
+                            <h2>{{ product.ingredients }}</h2>
+                        </div>
+                        <div class="price-cart">
+                            <div class="left-part-price">
+                                <h2>{{ product.price }} грн/шт</h2>
+                                <input type="button" class="button-minus" value="-">
+                                <input class="counter" type="number" id="count" name="count" value="1" readonly>
+                                <input type="button" class="button-plus" value="+">
+                            </div>
+
+                            
+                      
+                            <div class="add-cart">
+                                <input class="add_to_cart" type="submit" name="button" value="Додати до кошику">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+
+            </div>
+            <div class="align-top-center-h about-feedbacks">
+                <div class="about">
+                    <h2>{{ product.description }}</h2>
+                </div>
+                <div class="feedbacks">
+                    <div class="rating">
+                        <h2 class="total-rating">Загальний рейтінг страви: {{ final_rating }}/5</h2>
+                    </div>
+                    <div class="comments-part">
+                        <h2 class="comments-title">Коментарі</h2>
+                        <div class="add_comment">
+                            <form id="add_comment" method="post">
+                                {% csrf_token %}
+                                <div class="rows">
+                                    <div class="row-1">
+                                        <p><input class="username" type="text" placeholder="Ваше ім'я" name="username" required></p>
+                                        <p><input class="input-rating" type="text" placeholder="Рейтінг" name="rating" maxlength="1" required></p> 
+                                    </div>
+                                    <div class="row-2">
+                                        <p><textarea class="comment-area" placeholder="Ваш коментарій" name="review" cols="44" rows="10" required></textarea></p>
+                                    </div>
+                                </div>
+                                <div class="add-btn">
+                                    <p><input class="add-comment" type="submit" value="Створити"></p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="comments">
+                            {% for comment in comments %}
+                            <div class="comment">
+                                <h2 class="comment-name-rating">{{ comment.username }} | Оцінка: {{ comment.rating }}</h2>
+                                <h3 class="user-review">{{ comment.review }}</h3> 
+                            </div>
+                            <br><br>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

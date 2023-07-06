@@ -1,0 +1,31 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <script src="{% static 'js/cart.js' %}" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="times-sign">&times;</h1>
+    <form id="order" method="post">
+        <input type="hidden" id="success_order" value="{% url 'cart' %}">
+        {% csrf_token %}
+        <!-- <h3 class="times-sign">&times;</h3> -->
+        <div class="input-lines">
+            <p>Ваше замовлення:</p>
+            {% if user.is_authenticated %}
+                <p>Ім'я: <b>{{user.first_name}}</b></p>
+            {% endif %}
+            <p>Замовлення:</p>
+            {% for final_order in cartItems %}
+            <p><b>{{final_order.product.name}}</b> у кількості: <b>{{final_order.count}}</b></p>
+            {% endfor %}
+            <p>Загаьна ціна: <b>{{full_price}}грн</b></p>
+        </div>
+        <button class="submit-order">Замовити!</button>
+    </form>
+    
+</body>
+</html>

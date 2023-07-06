@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endblock %}
+{% block title %}Вийти з аккаунту?{% endblock %}
+
+
+{% block content %}
+   <div class="content">
+      <h1>{{user.first_name}}</h1>
+      <h2>Ви дійсно хочете вийти з аккаунту?</h2>
+      <div class="button">
+         <a href="/logout">Так</a>
+      </div>
+
+      <!-- <div class="blocks">
+         <a href="{% url 'love_product' %}"><div class="love-product">
+            <h1>Love product</h1>
+         </div></a>
+         <a href="{% url 'all_receipt' %}"><div class="all-receipt">
+            <h1>All receipt</h1>
+         </div></a>
+         <a href="{% url 'all_cards' %}"><div class="all-cards">
+            <h1>All cards</h1>
+         </div></a>
+      </div> -->
+   </div>
+      
+   
+{% endblock %}

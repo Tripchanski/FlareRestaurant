@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block js %} <script src="{% static 'js/register.js' %}" defer></script> 
+{% endblock %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endblock %}
+{% block title %}Реєстрація{% endblock %}
+
+
+{% block content %}
+    <div class="content-registration align-center-v">
+        <h1>Реєстрація</h1>
+        <form method="post">
+            {% csrf_token %}
+            <h2 style="color:red">{{ error }}</h2>
+            <div class="row-1">
+                <h2><input class="username" type="text" placeholder="Ім'я та прізвище" name="name" maxlength="30" required></h2>
+                <h2><input class="phone-number" id="phoneNumber"type="text" placeholder="Номер телефону" name="phone_number" maxlength="20" required></h2>
+            </div>
+            <!-- <p><input type="text" placeholder="Регіон" name="region" value="{{region}}" required></p> -->
+
+            <!-- <h2>Держава<select name="country" required>
+                <option value="Ukraine">Ukraine</option>
+                <option value="Poland">Poland</option>
+                <option value="France">France</option>
+            </select></h2> -->
+            <div class="row-2">
+                <h2><input class="email" type="text" placeholder="Електрона пошта" name="email" maxlength="30" required></h2>
+                <h2><input class="adress" type="text" placeholder="Адреса" name="adress" maxlength="100"></h2>
+            </div>
+            <div class="row-3">
+                <h2><input class="password" type="password" placeholder="Пароль" name="password" maxlength="35" required></h2>
+                <h2><input class="password" type="password" placeholder="Підтвердіть пароль" name="password_confirm" maxlength="35" required></h2>
+            </div>
+            <h2 class="go-to-reg">Вже є акаунт? <a class="login-link" href="{% url 'login' %}">Увійти</a></h2>
+            <h2 class="reg-btn"><input class="button" type="submit" value="Реєстрація"></h2>
+
+        </form>
+
+
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+        <script>$('#phoneNumber').inputmask("+380 (99) 999-99-99");</script>
+    </div>
+    
+
+
+{% endblock %}

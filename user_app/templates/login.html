@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/style.css' %}">  {% endblock %}
+{% block title %}Вхід{% endblock %}
+
+
+{% block content %}
+    <div class="content-login align-center-v">
+        <h1>Вхід</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-lines">
+                <h2><input class="email" type="text" placeholder="Електрона пошта" name="email" required></h2>
+                <h2><input class="password" type="password" placeholder="Пароль" name="password" required></h2>
+            </div>
+
+
+            <h2>Ще немає акаунту? <a class="reg-link" href="{% url 'registration' %}">Зареєструватись</a></h2>
+
+            <h2 style="color:red">{{ error }}</h2>
+
+            <h2 class="log-btn"><input class="button" type="submit" value="Вхід"></h2>
+        </form>
+    </div>
+    
+{% endblock %}

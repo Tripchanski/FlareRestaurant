@@ -1,0 +1,64 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}"> {% endblock %}
+
+{% block js %}
+<script src="{% static 'js/jQuery.js' %}" defer></script>
+<script src="{% static 'js/cart.js' %}" defer></script>
+{% endblock %}
+
+{% block title %}Корзина{% endblock %}
+
+
+{% block content %}
+<div class="align-center-h content-page">
+    <div class="align-center-h workspace">
+        <div class="align-top-center-h left-part-workspace">
+            <div class="product-content">
+                {% for product_in_cart in products_in_cart %}
+                <form class="delete-from-cart" method="post">
+                    {% csrf_token %}
+                    <div class="align-left-h product_in_cart">
+                        <img class="product-image" src="{{product_in_cart.product.image.url}}"
+                            style="max-width: 263px; max-width: 263px;">
+                        <div class="align-center-v end-part">
+                            <div class="align-top-left-h text-cartitem">
+                                <h3>{{product_in_cart.product.name}}</h3>
+                                <!-- <h3>{{product_in_cart.count}}</h3> -->
+                            </div>
+                            <div class="align-left-h price-delbutton">
+                                <input class="delete_button" type="submit" name="button" value="Видалити з кошику">
+                                <input class="product" type="hidden" name="cartItemId" value="{{ product_in_cart.pk }}">
+                                <input type="hidden" value="{% url 'delete_from_cart' %}" , id="url_delete_from_cart">
+                                <h3>{{product_in_cart.counter_price}}грн</h3>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                {% endfor %}
+                <input type="hidden" name="cart_url" id="cart_url" value="{% url 'order' %}">
+            </div>
+        </div>
+        <div class="align-top-center-v right-part-workspace">
+            <div class="align-top-center-v list-products">
+                {% for text_receipt in products_in_cart %}
+                <div class="solo-product-{{text_receipt.pk}} receipt-text">
+                    <p>{{text_receipt.product.name}} <b>x{{text_receipt.count}}</b></p>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="final-price">
+                <h2 class="price">Загальна ціна: <span class="total-price">{{ full_price }}</span>грн</h2>
+                <input class="go-to-order" type="submit" name="order" value="Перейти до Оформлення">
+            </div>
+        </div>
+        <div class="modal-overlay">
+            <div class="modal">
+               
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

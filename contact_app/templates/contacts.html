@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/contacts.css' %}"> {% endblock %}
+{% block title %}Контаки{% endblock %}
+
+
+{% block content %}
+    <div class="content align-top-center-v">
+        <div class="all_contacts">
+            {% for contact in all_contacts %}
+                <div class="contact">
+                    <img src="{{ contact.image.url }}" alt="wtf, bro" width="300px">
+                    <h2 class="contact-name">{{ contact.name }}</h2>
+                    <h2 class="contact-post">{{ contact.post }}</h2>
+                    <h2 class="contact-number">+{{ contact.phone_number }}</h2>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block style %} <link rel="stylesheet" href="{% static 'css/main.css' %}"> {% endblock %}
+{% block js %} <script src="{% static 'js/main.js' %}" defer></script> {% endblock %}
+{% block title %}Головна{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <nav id="first-block" class="align-center-v first-part">
+            <h1>FlareRestaurant</h1>
+
+            <div class="arrrows-nav">
+                <a href="#second-block"><div class="arrrow-nav"><img src="{% static 'img/arrow.svg' %}" alt="Down"></div></a>
+            </div>
+        </nav>
+
+
+        <!-- <div class="align-center-h navbar">
+            <div class="align-center-h numbers">
+                <h2 class="navbar-btn-1 choose-block">1</h2>
+                <h2 class="navbar-btn-2 choose-block">2</h2>
+                <h2 class="navbar-btn-3 choose-block">3</h2>
+                <h2 class="navbar-btn-4 choose-block">4</h2>
+                <h2 class="navbar-btn-5 choose-block">5</h2>
+                <h2 class="navbar-btn-6 choose-block">6</h2>                 
+            </div>
+        </div> -->
+
+
+        <nav id="second-block" class="align-center-v second-part">
+            <div class="text-block">
+                <p class="main-text">Ресторан, що пропонує неперевершений досвід у світі кулінарії та гостинності. Ресторан, що привертає увагу своїм стильним та сучасним інтер'єром, створюючи атмосферу затишку та комфорту.</p>
+            </div>
+            <div class="arrrows-nav">
+                <a href="#first-block"><div class="arrrow-nav up"><img src="{% static 'img/arrow.svg' %}" alt="Up"></div></a>
+                <a href="#third-block"><div class="arrrow-nav"><img src="{% static 'img/arrow.svg' %}" alt="Down"></div></a>
+            </div>
+
+        </nav>
+
+
+        <nav id="third-block" class="align-bottom-right-v third-part">
+
+            <!-- <a href="{% url 'menu' %}{{ rec_product_2.pk }}">
+                <div class="top-dish">
+                    <span class="try">Скуштуйте:</span>
+                    <div class="product">
+                        <img class="prod-image" src="{{rec_product_2.image.url}}" alt="IMG NOT FOUND">
+                        <p class="prod-name">{{rec_product_2.name}}</p>
+                    </div>
+                </div>
+            </a> -->
+            <div class="text-block_1">
+                <p class="main-text">Наша кухня - справжнє мистецтво. Наші талановиті шеф-кухарі використовують найсвіжіші інгредієнти, щоб створити неперевершені смакові поєднання та вражаючі страви. </p>
+            </div>
+
+            <!-- <a href="{% url 'menu' %}{{ rec_product_3.pk }}">
+                <div class="top-dish">
+                    <span class="try">Скуштуйте:</span>
+
+                        <div class="product">
+                            <img class="prod-image" src="{{rec_product_3.image.url}}" alt="IMG NOT FOUND">
+                            <p class="prod-name">{{rec_product_3.name}}</p>
+                        </div>
+                </div>
+            </a> -->
+            <div class="arrrows-nav">
+                <a href="#second-block"><div class="arrrow-nav up"><img src="{% static 'img/arrow.svg' %}" alt="Up"></div></a>
+                <a href="#fourth-block"><div class="arrrow-nav"><img src="{% static 'img/arrow.svg' %}" alt="Down"></div></a>
+            </div>
+        </nav>
+
+
+        <nav id="fourth-block" class="align-bottom-left-h fourth-part">
+            <div class="text-block_2">
+                <p class="main-text">Наше меню багате та різноманітне. Ви знайдете тут страви різних кухонь світу.</p>
+            </div>
+            <div class="link-block">
+                <a href="{% url 'menu' %}{{ rec_product.pk }}">
+                    <div class="top-dish">
+                        <span class="try">Скуштуйте:</span>
+                        <div class="product">
+                            <img class="prod-image" src="{{rec_product.image.url}}" alt="IMG NOT FOUND">
+                            <p class="prod-name">{{rec_product.name}}</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="{% url 'menu' %}">
+                    <div class="menu-link">
+                        <p class="text-link1">Меню</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="arrrows-nav">
+                <a href="#third-block"><div class="arrrow-nav up"><img src="{% static 'img/arrow.svg' %}" alt="Up"></div></a>
+                <a href="#fifth-block"><div class="arrrow-nav"><img src="{% static 'img/arrow.svg' %}" alt="Down"></div></a>
+            </div>
+        </nav>
+
+
+        <nav id="fifth-block" class="align-top-center-h fifth-part">
+            
+            <div class="all_contacts" id="all_contacts">
+                {% for contact in all_contacts %}
+                    <div class="contact">
+                        <img class="contact-img" src="{{ contact.image.url }}" alt="worker" width="300px">
+                        <h2 class="contact-name">{{ contact.name }}</h2>
+                        <h2 class="contact-post">{{ contact.post }}</h2>
+                        <h2 class="contact-number">+{{ contact.phone_number }}</h2>
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- <div class="text-block_3">
+                <p class="main-text">Наша команда професіоналів у нашому ресторані присвячена наданню найвищої якості обслуговування.</p>
+            </div>
+            <a href="{% url 'contacts' %}">
+                <div class="menu-link_1">
+                    <p class="text-link1">Контакти</p>
+                </div> -->
+            </a>
+            <div class="arrrows-nav">
+                <a href="#fourth-block"><div class="arrrow-nav up"><img src="{% static 'img/arrow.svg' %}" alt="Up"></div></a>
+                <a href="#sixth-block"><div class="arrrow-nav"><img src="{% static 'img/arrow.svg' %}" alt="Down"></div></a>
+            </div>
+        </nav>
+
+
+        <nav id="sixth-block" class="align-center-v sixth-part">
+            <div class="text-block_4">
+                <p class="main-text">Ми прагнемо досягти найвищих стандартів якості та задоволення наших гостей.</p>
+            </div>
+            
+            <div class="arrrows-nav">
+                <a href="#fifth-block"><div class="arrrow-nav up"><img src="{% static 'img/arrow.svg' %}" alt="Up"></div></a>
+            </div>        
+        </nav>
+
+
+    </div>
+{% endblock %}

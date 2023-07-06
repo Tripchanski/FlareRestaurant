@@ -1,0 +1,338 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Marck Script', cursive;
+}
+
+.content-page {
+    display: flex; 
+    justify-content: center;
+    padding: 130px 0px 20px;
+    isolation: isolate;
+    position: relative;
+    width: 100%;
+    height: auto;
+    background: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../../../media/images/2023/cart-backgr.png);
+    background-size: cover;
+}
+
+.workspace {
+    width: 100%;
+    height: 100%;
+    padding: 0px 37px;
+    gap: 30px;
+}
+
+.left-part-workspace {
+    padding: 0px 0px 10px;
+    gap: 11px;
+    width: 588px;
+    height: 600px;
+}
+
+.product_in_cart {
+    width: 556px;
+    height: 247px;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 10px;
+}
+
+.product-image {
+    height: 230px;
+
+}
+
+.text-cartitem {
+    display: flex;
+    width: 263px;
+    height: 139px;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 29px;
+    line-height: 36px;
+    color: #000000;
+    justify-content: center;
+}
+
+
+.price-delbutton {
+    width: 263px;
+    height: 54px;
+    justify-content: center;
+    gap: 26px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 47px;
+    color: black;
+}
+
+.product-content {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: fit-content;
+    height: 70vh;
+    gap: 15px;
+}
+
+.end-part {
+    display: flex;
+    width: 100%;
+    height: 227px;
+    text-align: center;
+
+}
+
+.right-part-workspace {
+    width: 588px;
+    height: 600px;
+    padding: 0px 0px 15px 15px;
+    justify-content: space-between;
+    background: #DDDD;
+}
+
+.list-products {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 15px 0px 0px;
+    gap: 30px;
+}
+
+.receipt-text {
+    display: flex;
+    justify-content: start;
+    text-align: start;
+    width: 100%;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.modal-overlay {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+}
+
+.final-price {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0px 20px 15px;
+}
+
+.times-sign {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.submit-order {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 150px;
+    background-color: white;
+    padding: 5px;
+    border: none;
+    height: 35px;
+    font-size: 20px;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+#order {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.delete_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 150px;
+    background-color: white;
+    padding: 5px;
+    border: none;
+    height: 50px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.input-lines {
+    display: flex;
+    flex-direction: column;
+    font-size: x-large;
+    gap: 5px;
+}
+
+input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 250px;
+    background-color: white;
+    padding: 5px;
+    border: none;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+
+
+
+/* Auto layout =========================================================== */
+
+.align-top-left-h{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.align-top-left-v{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.align-top-center-h{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.align-top-center-v{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.align-top-right-h{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.align-top-right-v{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.align-left-h{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.align-left-v{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.align-center-h{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.align-center-v{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.align-right-h{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.align-right-v{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.align-bottom-left-h{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.align-bottom-left-v{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.align-bottom-h{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.align-bottom-v{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.align-bottom-right-h{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.align-bottom-right-v{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
